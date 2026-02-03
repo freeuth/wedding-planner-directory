@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner Instagram Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fafafa;
+            color: #262626;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+        }
+
+        .filter-btn {
+            padding: 10px 18px;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .stats {
+            max-width: 800px;
+            margin: 0 auto 12px;
+            padding: 0 16px;
+            font-size: 13px;
+            color: #8e8e8e;
+        }
+
+        .list-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 16px 40px;
+        }
+
+        .company-section {
+            margin-bottom: 24px;
+        }
+
+        .company-header {
+            font-size: 13px;
+            font-weight: 600;
+            color: #8e8e8e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            border-bottom: 1px solid #efefef;
+            margin-bottom: 4px;
+        }
+
+        .planner-card {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .planner-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .planner-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .planner-avatar.official {
+            background: linear-gradient(135deg, #f5af19, #f12711);
+        }
+
+        .planner-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .planner-id {
+            font-size: 15px;
+            font-weight: 600;
+            color: #262626;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .planner-meta {
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-top: 2px;
+        }
+
+        .planner-badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background: #efefef;
+            color: #666;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        .planner-badge.official {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .planner-arrow {
+            color: #c7c7c7;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8e8e8e;
+        }
+
+        .no-results p {
+            font-size: 15px;
+        }
+
+        .csv-link {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #efefef;
+            margin-top: 20px;
+        }
+
+        .csv-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 22px; }
+            .controls { flex-direction: column; }
+            .filter-btn { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Wedding Planner Instagram Directory</h1>
+        <p>75 verified accounts from top Korean wedding planning companies</p>
+    </div>
+
+    <div class="controls">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search by name, company, or @id...">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="individual">Planners</button>
+        <button class="filter-btn" data-filter="official">Companies</button>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="list-container" id="listContainer"></div>
+
+    <script>
+    const planners = [
+        {no:1, company:"와이즈웨딩", name:"주소현", id:"@joosohyun_", url:"https://www.instagram.com/joosohyun_/", type:"개인플래너"},
+        {no:2, company:"와이즈웨딩", name:"송송", id:"@ssong__pl", url:"https://www.instagram.com/ssong__pl/", type:"개인플래너"},
+        {no:3, company:"와이즈웨딩", name:"임혜인", id:"@_imhyein", url:"https://www.instagram.com/_imhyein/", type:"개인플래너"},
+        {no:4, company:"와이즈웨딩", name:"나은", id:"@naeun.ple", url:"https://www.instagram.com/naeun.ple/", type:"개인플래너"},
+        {no:5, company:"와이즈웨딩", name:"황유진", id:"@_hwang_planner", url:"https://www.instagram.com/_hwang_planner/", type:"개인플래너"},
+        {no:6, company:"와이즈웨딩", name:"유진", id:"@uujin.pl", url:"https://www.instagram.com/uujin.pl/", type:"개인플래너"},
+        {no:7, company:"와이즈웨딩", name:"디테일", id:"@detaeil.pl", url:"https://www.instagram.com/detaeil.pl/", type:"개인플래너"},
+        {no:8, company:"와이즈웨딩", name:"문은", id:"@moment_mooon", url:"https://www.instagram.com/moment_mooon/", type:"개인플래너"},
+        {no:9, company:"와이즈웨딩", name:"유니", id:"@shyuuni_pl", url:"https://www.instagram.com/shyuuni_pl/", type:"개인플래너"},
+        {no:10, company:"와이즈웨딩", name:"정", id:"@wise_jungpl", url:"https://www.instagram.com/wise_jungpl/", type:"개인플래너"},
+        {no:11, company:"와이즈웨딩", name:"강화영", id:"@kangplanner1101", url:"https://www.instagram.com/kangplanner1101/", type:"개인플래너"},
+        {no:12, company:"와이즈웨딩", name:"크리스탈", id:"@crystal.plan", url:"https://www.instagram.com/crystal.plan/", type:"개인플래너"},
+        {no:13, company:"와이즈웨딩", name:"이민정", id:"@wedding.p.mj", url:"https://www.instagram.com/wedding.p.mj/", type:"개인플래너"},
+        {no:14, company:"와이즈웨딩", name:"정민주", id:"@wkje0301", url:"https://www.instagram.com/wkje0301/", type:"개인플래너"},
+        {no:15, company:"와이즈웨딩", name:"새미", id:"@saemi_pl", url:"https://www.instagram.com/saemi_pl/", type:"개인플래너"},
+        {no:16, company:"와이즈웨딩", name:"변다솔", id:"@sole.pl", url:"https://www.instagram.com/sole.pl/", type:"개인플래너"},
+        {no:17, company:"와이즈웨딩", name:"이룬", id:"@iiiloveher_", url:"https://www.instagram.com/iiiloveher_/", type:"개인플래너"},
+        {no:18, company:"와이즈웨딩", name:"아람", id:"@wise_aram", url:"https://www.instagram.com/wise_aram/", type:"개인플래너"},
+        {no:19, company:"와이즈웨딩", name:"박지화", id:"@wed.hwa", url:"https://www.instagram.com/wed.hwa/", type:"개인플래너"},
+        {no:20, company:"와이즈웨딩", name:"진수", id:"@wise_jins", url:"https://www.instagram.com/wise_jins/", type:"개인플래너"},
+        {no:21, company:"와이즈웨딩", name:"히", id:"@hihee.pl", url:"https://www.instagram.com/hihee.pl/", type:"개인플래너"},
+        {no:22, company:"와이즈웨딩", name:"서정", id:"@sj__planner", url:"https://www.instagram.com/sj__planner/", type:"개인플래너"},
+        {no:23, company:"와이즈웨딩", name:"여우", id:"@eyoo.pl", url:"https://www.instagram.com/eyoo.pl/", type:"개인플래너"},
+        {no:24, company:"와이즈웨딩", name:"비인", id:"@biin.pl", url:"https://www.instagram.com/biin.pl/", type:"개인플래너"},
+        {no:25, company:"와이즈웨딩", name:"엄원영", id:"@um_weddingplanner", url:"https://www.instagram.com/um_weddingplanner/", type:"개인플래너"},
+        {no:26, company:"와이즈웨딩", name:"채림", id:"@chaerim_pl", url:"https://www.instagram.com/chaerim_pl/", type:"개인플래너"},
+        {no:27, company:"와이즈웨딩", name:"하연", id:"@hayou.pl", url:"https://www.instagram.com/hayou.pl/", type:"개인플래너"},
+        {no:28, company:"와이즈웨딩", name:"정윤", id:"@noble_0219", url:"https://www.instagram.com/noble_0219/", type:"개인플래너"},
+        {no:29, company:"와이즈웨딩", name:"이설", id:"@pl.suel", url:"https://www.instagram.com/pl.suel/", type:"개인플래너"},
+        {no:30, company:"와이즈웨딩", name:"홍나라", id:"@wedding.nara_", url:"https://www.instagram.com/wedding.nara_/", type:"개인플래너"},
+        {no:31, company:"와이즈웨딩", name:"주미", id:"@plan.ju_", url:"https://www.instagram.com/plan.ju_/", type:"개인플래너"},
+        {no:32, company:"와이즈웨딩", name:"지은", id:"@with_jieunpl", url:"https://www.instagram.com/with_jieunpl/", type:"개인플래너"},
+        {no:33, company:"와이즈웨딩", name:"현진", id:"@wise_hyeonjin", url:"https://www.instagram.com/wise_hyeonjin/", type:"개인플래너"},
+        {no:34, company:"와이즈웨딩", name:"승빈", id:"@wedding_sbs", url:"https://www.instagram.com/wedding_sbs/", type:"개인플래너"},
+        {no:35, company:"와이즈웨딩", name:"다희", id:"@wise_dahee", url:"https://www.instagram.com/wise_dahee/", type:"개인플래너"},
+        {no:36, company:"와이즈웨딩", name:"윤영", id:"@wise_yy", url:"https://www.instagram.com/wise_yy/", type:"개인플래너"},
+        {no:37, company:"와이즈웨딩", name:"현미", id:"@hyeonmi_wedding", url:"https://www.instagram.com/hyeonmi_wedding/", type:"개인플래너"},
+        {no:38, company:"와이즈웨딩", name:"은", id:"@euuun.pl", url:"https://www.instagram.com/euuun.pl/", type:"개인플래너"},
+        {no:39, company:"와이즈웨딩", name:"솔립", id:"@solip.planner", url:"https://www.instagram.com/solip.planner/", type:"개인플래너"},
+        {no:40, company:"와이즈웨딩", name:"영", id:"@young_wed", url:"https://www.instagram.com/young_wed/", type:"개인플래너"},
+        {no:41, company:"와이즈웨딩", name:"향기", id:"@weddingperfume", url:"https://www.instagram.com/weddingperfume/", type:"개인플래너"},
+        {no:42, company:"와이즈웨딩", name:"세진", id:"@sejin_pl", url:"https://www.instagram.com/sejin_pl/", type:"개인플래너"},
+        {no:43, company:"와이즈웨딩", name:"여진", id:"@yeajin.pl", url:"https://www.instagram.com/yeajin.pl/", type:"개인플래너"},
+        {no:44, company:"와이즈웨딩", name:"노을", id:"@noelpl.day", url:"https://www.instagram.com/noelpl.day/", type:"개인플래너"},
+        {no:45, company:"와이즈웨딩", name:"코지", id:"@cozy__plan", url:"https://www.instagram.com/cozy__plan/", type:"개인플래너"},
+        {no:46, company:"와이즈웨딩", name:"김민선", id:"@kimminseoni", url:"https://www.instagram.com/kimminseoni/", type:"개인플래너"},
+        {no:47, company:"와이즈웨딩", name:"권예은", id:"@ws_kwonpl", url:"https://www.instagram.com/ws_kwonpl/", type:"개인플래너"},
+        {no:48, company:"와이즈웨딩", name:"현", id:"@plan__hyun", url:"https://www.instagram.com/plan__hyun/", type:"개인플래너"},
+        {no:49, company:"와이즈웨딩", name:"지우", id:"@wed.jioo", url:"https://www.instagram.com/wed.jioo/", type:"개인플래너"},
+        {no:50, company:"와이즈웨딩", name:"제로", id:"@zzero_pl", url:"https://www.instagram.com/zzero_pl/", type:"개인플래너"},
+        {no:51, company:"헬렌조 웨딩플랜", name:"엄영란 이사", id:"@eom_pl", url:"https://www.instagram.com/eom_pl/", type:"개인플래너"},
+        {no:52, company:"헬렌조 웨딩플랜", name:"윤혜정 실장", id:"@wedding_youn", url:"https://www.instagram.com/wedding_youn/", type:"개인플래너"},
+        {no:53, company:"헬렌조 웨딩플랜", name:"공식계정", id:"@helencho_official", url:"https://www.instagram.com/helencho_official/", type:"업체공식"},
+        {no:54, company:"라씨엘", name:"김지연 대표", id:"@laciel.co.kr", url:"https://www.instagram.com/laciel.co.kr/", type:"업체공식"},
+        {no:55, company:"엘르웨딩", name:"이현희 본부장", id:"@ellewedding", url:"https://www.instagram.com/ellewedding/", type:"개인플래너"},
+        {no:56, company:"베리굿웨딩", name:"공식계정", id:"@verygoodwedding", url:"https://www.instagram.com/verygoodwedding/", type:"업체공식"},
+        {no:57, company:"베리굿웨딩", name:"신세라 부장", id:"@sarahs.wedding", url:"https://www.instagram.com/sarahs.wedding/", type:"개인플래너"},
+        {no:58, company:"아이웨딩", name:"공식계정", id:"@iwedding_official", url:"https://www.instagram.com/iwedding_official/", type:"업체공식"},
+        {no:59, company:"아이웨딩", name:"웨딩MD", id:"@iwedding.wed.md", url:"https://www.instagram.com/iwedding.wed.md/", type:"업체공식"},
+        {no:60, company:"아이니웨딩", name:"공식계정", id:"@iniwedding_official", url:"https://www.instagram.com/iniwedding_official/", type:"업체공식"},
+        {no:61, company:"다이렉트 결혼준비", name:"공식계정", id:"@direct.wedding", url:"https://www.instagram.com/direct.wedding/", type:"업체공식"},
+        {no:62, company:"웨딩북", name:"공식계정", id:"@weddingbook.official", url:"https://www.instagram.com/weddingbook.official/", type:"업체공식"},
+        {no:63, company:"요즘웨딩", name:"공식계정", id:"@yozmwedding_official", url:"https://www.instagram.com/yozmwedding_official/", type:"업체공식"},
+        {no:64, company:"인웨딩", name:"공식계정", id:"@inwedding_", url:"https://www.instagram.com/inwedding_/", type:"업체공식"},
+        {no:65, company:"웨딩두잇", name:"공식계정", id:"@weddingdoit", url:"https://www.instagram.com/weddingdoit/", type:"업체공식"},
+        {no:66, company:"더퍼스트웨딩", name:"공식계정", id:"@thefirstwedding_official", url:"https://www.instagram.com/thefirstwedding_official/", type:"업체공식"},
+        {no:67, company:"그린웨딩", name:"공식계정", id:"@greenwedding_official", url:"https://www.instagram.com/greenwedding_official/", type:"업체공식"},
+        {no:68, company:"와이즈웨딩", name:"공식계정", id:"@wisewedding_styling", url:"https://www.instagram.com/wisewedding_styling/", type:"업체공식"},
+        {no:69, company:"웨딩21 매거진", name:"공식계정", id:"@wedding21_magazine", url:"https://www.instagram.com/wedding21_magazine/", type:"업체공식"},
+        {no:70, company:"웨딩프렌즈", name:"정채은", id:"@weddingfriendz_miracle", url:"https://www.instagram.com/weddingfriendz_miracle/", type:"개인플래너"},
+        {no:71, company:"다다플래닝", name:"공식계정", id:"@dadamplanning_wedding", url:"https://www.instagram.com/dadamplanning_wedding/", type:"업체공식"},
+        {no:72, company:"마이웨딩스토리", name:"김미선 디렉터", id:"@my_wedding_story_busan_korea", url:"https://www.instagram.com/my_wedding_story_busan_korea/", type:"개인플래너"},
+        {no:73, company:"블랑드봄", name:"김봄 대표", id:"@bombom_w", url:"https://www.instagram.com/bombom_w/", type:"개인플래너"},
+        {no:74, company:"르웨딩", name:"손아영 실장", id:"@sss_ayoung", url:"https://www.instagram.com/sss_ayoung/", type:"개인플래너"},
+        {no:75, company:"와이즈웨딩", name:"안지", id:"@nameanji", url:"https://www.instagram.com/nameanji/", type:"개인플래너"}
+    ];
+
+    let currentFilter = 'all';
+
+    function getInitial(name) {
+        if (name === '공식계정' || name === '웨딩MD') return '★';
+        return name.charAt(0);
+    }
+
+    function render() {
+        const query = document.getElementById('searchBox').value.toLowerCase();
+        const container = document.getElementById('listContainer');
+        const statsEl = document.getElementById('stats');
+
+        let filtered = planners.filter(p => {
+            const matchesFilter = currentFilter === 'all' ||
+                (currentFilter === 'individual' && p.type === '개인플래너') ||
+                (currentFilter === 'official' && p.type === '업체공식');
+
+            const matchesSearch = !query ||
+                p.company.toLowerCase().includes(query) ||
+                p.name.toLowerCase().includes(query) ||
+                p.id.toLowerCase().includes(query);
+
+            return matchesFilter && matchesSearch;
+        });
+
+        statsEl.textContent = `Showing ${filtered.length} of ${planners.length} accounts`;
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<div class="no-results"><p>No results found.</p></div>';
+            return;
+        }
+
+        // Group by company
+        const groups = {};
+        filtered.forEach(p => {
+            if (!groups[p.company]) groups[p.company] = [];
+            groups[p.company].push(p);
+        });
+
+        let html = '';
+        for (const [company, items] of Object.entries(groups)) {
+            html += `<div class="company-section">`;
+            html += `<div class="company-header">${company} (${items.length})</div>`;
+            items.forEach(p => {
+                const isOfficial = p.type === '업체공식';
+                html += `
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="planner-card">
+                        <div class="planner-avatar ${isOfficial ? 'official' : ''}">${getInitial(p.name)}</div>
+                        <div class="planner-info">
+                            <div class="planner-id">${p.id}</div>
+                            <div class="planner-meta">${p.name} · ${p.company}</div>
+                        </div>
+                        <span class="planner-badge ${isOfficial ? 'official' : ''}">${isOfficial ? 'Official' : 'Planner'}</span>
+                        <span class="planner-arrow">&#8250;</span>
+                    </a>`;
+            });
+            html += `</div>`;
+        }
+
+        html += `<div class="csv-link"><a href="data.csv" download>Download CSV Data</a></div>`;
+        container.innerHTML = html;
+    }
+
+    document.getElementById('searchBox').addEventListener('input', render);
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            render();
+        });
+    });
+
+    render();
+    </script>
+</body>
+</html>
