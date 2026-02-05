@@ -3,388 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Planner Instagram Directory</title>
+    <title>Wedding Instagram Directory</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #fafafa;
-            color: #262626;
-            min-height: 100vh;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .controls {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 16px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 16px;
-            border: 1px solid #dbdbdb;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .search-box:focus {
-            border-color: #667eea;
-        }
-
-        .filter-btn {
-            padding: 10px 18px;
-            border: 1px solid #dbdbdb;
-            border-radius: 8px;
-            background: white;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .stats {
-            max-width: 800px;
-            margin: 0 auto 12px;
-            padding: 0 16px;
-            font-size: 13px;
-            color: #8e8e8e;
-        }
-
-        .list-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 16px 40px;
-        }
-
-        .company-section {
-            margin-bottom: 24px;
-        }
-
-        .company-header {
-            font-size: 13px;
-            font-weight: 600;
-            color: #8e8e8e;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 8px 0;
-            border-bottom: 1px solid #efefef;
-            margin-bottom: 4px;
-        }
-
-        .planner-card {
-            display: flex;
-            align-items: center;
-            padding: 14px 16px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 6px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .planner-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .planner-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 16px;
-            margin-right: 14px;
-            flex-shrink: 0;
-        }
-
-        .planner-avatar.official {
-            background: linear-gradient(135deg, #f5af19, #f12711);
-        }
-
-        .planner-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .planner-id {
-            font-size: 15px;
-            font-weight: 600;
-            color: #262626;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .planner-meta {
-            font-size: 12px;
-            color: #8e8e8e;
-            margin-top: 2px;
-        }
-
-        .planner-badge {
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 12px;
-            background: #efefef;
-            color: #666;
-            flex-shrink: 0;
-            margin-left: 8px;
-        }
-
-        .planner-badge.official {
-            background: #fff3e0;
-            color: #e65100;
-        }
-
-        .planner-arrow {
-            color: #c7c7c7;
-            margin-left: 8px;
-            flex-shrink: 0;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #8e8e8e;
-        }
-
-        .no-results p {
-            font-size: 15px;
-        }
-
-        .csv-link {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #efefef;
-            margin-top: 20px;
-        }
-
-        .csv-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        @media (max-width: 600px) {
-            .header h1 { font-size: 22px; }
-            .controls { flex-direction: column; }
-            .filter-btn { text-align: center; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#fafafa;color:#262626;min-height:100vh}
+        .header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:32px 20px 0;text-align:center}
+        .header h1{font-size:24px;font-weight:700;margin-bottom:4px}
+        .header p{font-size:13px;opacity:.85;margin-bottom:20px}
+        .tabs{display:flex;max-width:800px;margin:0 auto;gap:0}
+        .tab{flex:1;padding:12px 8px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;border:none;background:rgba(255,255,255,.15);color:rgba(255,255,255,.7);border-radius:10px 10px 0 0;transition:all .2s}
+        .tab:hover{background:rgba(255,255,255,.25);color:#fff}
+        .tab.active{background:#fafafa;color:#262626}
+        .tab .tab-icon{font-size:18px;display:block;margin-bottom:2px}
+        .controls{max-width:800px;margin:16px auto;padding:0 16px;display:flex;gap:10px;flex-wrap:wrap}
+        .search-box{flex:1;min-width:200px;padding:11px 14px;border:1px solid #dbdbdb;border-radius:8px;font-size:14px;outline:none;transition:border-color .2s}
+        .search-box:focus{border-color:#667eea}
+        .stats{max-width:800px;margin:0 auto 10px;padding:0 16px;font-size:12px;color:#8e8e8e}
+        .list-container{max-width:800px;margin:0 auto;padding:0 16px 40px}
+        .company-section{margin-bottom:20px}
+        .company-header{font-size:12px;font-weight:600;color:#8e8e8e;letter-spacing:.5px;padding:6px 0;border-bottom:1px solid #efefef;margin-bottom:4px}
+        .card{display:flex;align-items:center;padding:12px 14px;background:#fff;border-radius:10px;margin-bottom:5px;text-decoration:none;color:inherit;transition:all .2s;border:1px solid transparent}
+        .card:hover{border-color:#667eea;box-shadow:0 2px 12px rgba(102,126,234,.12);transform:translateY(-1px)}
+        .avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;margin-right:12px;flex-shrink:0}
+        .avatar.planner{background:linear-gradient(135deg,#667eea,#764ba2)}
+        .avatar.dress{background:linear-gradient(135deg,#f093fb,#f5576c)}
+        .avatar.makeup{background:linear-gradient(135deg,#4facfe,#00f2fe)}
+        .avatar.suit{background:linear-gradient(135deg,#434343,#000000)}
+        .avatar.official{background:linear-gradient(135deg,#f5af19,#f12711)}
+        .info{flex:1;min-width:0}
+        .info-id{font-size:14px;font-weight:600;color:#262626;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .info-meta{font-size:11px;color:#8e8e8e;margin-top:1px}
+        .badge{font-size:10px;padding:3px 7px;border-radius:10px;background:#efefef;color:#666;flex-shrink:0;margin-left:6px}
+        .badge.official{background:#fff3e0;color:#e65100}
+        .arrow{color:#c7c7c7;margin-left:6px;flex-shrink:0;font-size:18px}
+        .no-results{text-align:center;padding:50px 20px;color:#8e8e8e;font-size:14px}
+        .csv-link{text-align:center;padding:16px;border-top:1px solid #efefef;margin-top:16px}
+        .csv-link a{color:#667eea;text-decoration:none;font-size:12px;margin:0 8px}
+        @media(max-width:600px){.header h1{font-size:20px}.tab{font-size:11px;padding:10px 4px}.tab .tab-icon{font-size:16px}}
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Wedding Planner Instagram Directory</h1>
-        <p>75 verified accounts from top Korean wedding planning companies</p>
+<div class="header">
+    <h1>Wedding Instagram Directory</h1>
+    <p>Korean wedding vendor accounts</p>
+    <div class="tabs">
+        <button class="tab active" data-tab="planner"><span class="tab-icon">&#128141;</span>Planner</button>
+        <button class="tab" data-tab="dress"><span class="tab-icon">&#128087;</span>Dress</button>
+        <button class="tab" data-tab="makeup"><span class="tab-icon">&#128132;</span>Hair/Makeup</button>
+        <button class="tab" data-tab="suit"><span class="tab-icon">&#128084;</span>Suit</button>
     </div>
+</div>
+<div class="controls">
+    <input type="text" class="search-box" id="searchBox" placeholder="Search by name or @id...">
+</div>
+<div class="stats" id="stats"></div>
+<div class="list-container" id="listContainer"></div>
 
-    <div class="controls">
-        <input type="text" class="search-box" id="searchBox" placeholder="Search by name, company, or @id...">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="individual">Planners</button>
-        <button class="filter-btn" data-filter="official">Companies</button>
-    </div>
+<script>
+const DATA = {
+planner: [
+{c:"와이즈웨딩",n:"주소현",id:"@joosohyun_",u:"https://www.instagram.com/joosohyun_/",t:"개인"},
+{c:"와이즈웨딩",n:"송송",id:"@ssong__pl",u:"https://www.instagram.com/ssong__pl/",t:"개인"},
+{c:"와이즈웨딩",n:"임혜인",id:"@_imhyein",u:"https://www.instagram.com/_imhyein/",t:"개인"},
+{c:"와이즈웨딩",n:"나은",id:"@naeun.ple",u:"https://www.instagram.com/naeun.ple/",t:"개인"},
+{c:"와이즈웨딩",n:"황유진",id:"@_hwang_planner",u:"https://www.instagram.com/_hwang_planner/",t:"개인"},
+{c:"와이즈웨딩",n:"유진",id:"@uujin.pl",u:"https://www.instagram.com/uujin.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"디테일",id:"@detaeil.pl",u:"https://www.instagram.com/detaeil.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"문은",id:"@moment_mooon",u:"https://www.instagram.com/moment_mooon/",t:"개인"},
+{c:"와이즈웨딩",n:"유니",id:"@shyuuni_pl",u:"https://www.instagram.com/shyuuni_pl/",t:"개인"},
+{c:"와이즈웨딩",n:"정",id:"@wise_jungpl",u:"https://www.instagram.com/wise_jungpl/",t:"개인"},
+{c:"와이즈웨딩",n:"강화영",id:"@kangplanner1101",u:"https://www.instagram.com/kangplanner1101/",t:"개인"},
+{c:"와이즈웨딩",n:"크리스탈",id:"@crystal.plan",u:"https://www.instagram.com/crystal.plan/",t:"개인"},
+{c:"와이즈웨딩",n:"이민정",id:"@wedding.p.mj",u:"https://www.instagram.com/wedding.p.mj/",t:"개인"},
+{c:"와이즈웨딩",n:"정민주",id:"@wkje0301",u:"https://www.instagram.com/wkje0301/",t:"개인"},
+{c:"와이즈웨딩",n:"새미",id:"@saemi_pl",u:"https://www.instagram.com/saemi_pl/",t:"개인"},
+{c:"와이즈웨딩",n:"변다솔",id:"@sole.pl",u:"https://www.instagram.com/sole.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"이룬",id:"@iiiloveher_",u:"https://www.instagram.com/iiiloveher_/",t:"개인"},
+{c:"와이즈웨딩",n:"아람",id:"@wise_aram",u:"https://www.instagram.com/wise_aram/",t:"개인"},
+{c:"와이즈웨딩",n:"박지화",id:"@wed.hwa",u:"https://www.instagram.com/wed.hwa/",t:"개인"},
+{c:"와이즈웨딩",n:"진수",id:"@wise_jins",u:"https://www.instagram.com/wise_jins/",t:"개인"},
+{c:"와이즈웨딩",n:"히",id:"@hihee.pl",u:"https://www.instagram.com/hihee.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"서정",id:"@sj__planner",u:"https://www.instagram.com/sj__planner/",t:"개인"},
+{c:"와이즈웨딩",n:"여우",id:"@eyoo.pl",u:"https://www.instagram.com/eyoo.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"비인",id:"@biin.pl",u:"https://www.instagram.com/biin.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"엄원영",id:"@um_weddingplanner",u:"https://www.instagram.com/um_weddingplanner/",t:"개인"},
+{c:"와이즈웨딩",n:"채림",id:"@chaerim_pl",u:"https://www.instagram.com/chaerim_pl/",t:"개인"},
+{c:"와이즈웨딩",n:"하연",id:"@hayou.pl",u:"https://www.instagram.com/hayou.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"정윤",id:"@noble_0219",u:"https://www.instagram.com/noble_0219/",t:"개인"},
+{c:"와이즈웨딩",n:"이설",id:"@pl.suel",u:"https://www.instagram.com/pl.suel/",t:"개인"},
+{c:"와이즈웨딩",n:"홍나라",id:"@wedding.nara_",u:"https://www.instagram.com/wedding.nara_/",t:"개인"},
+{c:"와이즈웨딩",n:"주미",id:"@plan.ju_",u:"https://www.instagram.com/plan.ju_/",t:"개인"},
+{c:"와이즈웨딩",n:"지은",id:"@with_jieunpl",u:"https://www.instagram.com/with_jieunpl/",t:"개인"},
+{c:"와이즈웨딩",n:"현진",id:"@wise_hyeonjin",u:"https://www.instagram.com/wise_hyeonjin/",t:"개인"},
+{c:"와이즈웨딩",n:"승빈",id:"@wedding_sbs",u:"https://www.instagram.com/wedding_sbs/",t:"개인"},
+{c:"와이즈웨딩",n:"다희",id:"@wise_dahee",u:"https://www.instagram.com/wise_dahee/",t:"개인"},
+{c:"와이즈웨딩",n:"윤영",id:"@wise_yy",u:"https://www.instagram.com/wise_yy/",t:"개인"},
+{c:"와이즈웨딩",n:"현미",id:"@hyeonmi_wedding",u:"https://www.instagram.com/hyeonmi_wedding/",t:"개인"},
+{c:"와이즈웨딩",n:"은",id:"@euuun.pl",u:"https://www.instagram.com/euuun.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"솔립",id:"@solip.planner",u:"https://www.instagram.com/solip.planner/",t:"개인"},
+{c:"와이즈웨딩",n:"영",id:"@young_wed",u:"https://www.instagram.com/young_wed/",t:"개인"},
+{c:"와이즈웨딩",n:"향기",id:"@weddingperfume",u:"https://www.instagram.com/weddingperfume/",t:"개인"},
+{c:"와이즈웨딩",n:"세진",id:"@sejin_pl",u:"https://www.instagram.com/sejin_pl/",t:"개인"},
+{c:"와이즈웨딩",n:"여진",id:"@yeajin.pl",u:"https://www.instagram.com/yeajin.pl/",t:"개인"},
+{c:"와이즈웨딩",n:"노을",id:"@noelpl.day",u:"https://www.instagram.com/noelpl.day/",t:"개인"},
+{c:"와이즈웨딩",n:"코지",id:"@cozy__plan",u:"https://www.instagram.com/cozy__plan/",t:"개인"},
+{c:"와이즈웨딩",n:"김민선",id:"@kimminseoni",u:"https://www.instagram.com/kimminseoni/",t:"개인"},
+{c:"와이즈웨딩",n:"권예은",id:"@ws_kwonpl",u:"https://www.instagram.com/ws_kwonpl/",t:"개인"},
+{c:"와이즈웨딩",n:"현",id:"@plan__hyun",u:"https://www.instagram.com/plan__hyun/",t:"개인"},
+{c:"와이즈웨딩",n:"지우",id:"@wed.jioo",u:"https://www.instagram.com/wed.jioo/",t:"개인"},
+{c:"와이즈웨딩",n:"제로",id:"@zzero_pl",u:"https://www.instagram.com/zzero_pl/",t:"개인"},
+{c:"와이즈웨딩",n:"안지",id:"@nameanji",u:"https://www.instagram.com/nameanji/",t:"개인"},
+{c:"와이즈웨딩",n:"공식계정",id:"@wisewedding_styling",u:"https://www.instagram.com/wisewedding_styling/",t:"공식"},
+{c:"헬렌조 웨딩플랜",n:"엄영란 이사",id:"@eom_pl",u:"https://www.instagram.com/eom_pl/",t:"개인"},
+{c:"헬렌조 웨딩플랜",n:"윤혜정 실장",id:"@wedding_youn",u:"https://www.instagram.com/wedding_youn/",t:"개인"},
+{c:"헬렌조 웨딩플랜",n:"공식계정",id:"@helencho_official",u:"https://www.instagram.com/helencho_official/",t:"공식"},
+{c:"라씨엘",n:"김지연 대표",id:"@laciel.co.kr",u:"https://www.instagram.com/laciel.co.kr/",t:"공식"},
+{c:"엘르웨딩",n:"이현희 본부장",id:"@ellewedding",u:"https://www.instagram.com/ellewedding/",t:"개인"},
+{c:"베리굿웨딩",n:"공식계정",id:"@verygoodwedding",u:"https://www.instagram.com/verygoodwedding/",t:"공식"},
+{c:"베리굿웨딩",n:"신세라 부장",id:"@sarahs.wedding",u:"https://www.instagram.com/sarahs.wedding/",t:"개인"},
+{c:"아이웨딩",n:"공식계정",id:"@iwedding_official",u:"https://www.instagram.com/iwedding_official/",t:"공식"},
+{c:"아이웨딩",n:"웨딩MD",id:"@iwedding.wed.md",u:"https://www.instagram.com/iwedding.wed.md/",t:"공식"},
+{c:"아이니웨딩",n:"공식계정",id:"@iniwedding_official",u:"https://www.instagram.com/iniwedding_official/",t:"공식"},
+{c:"다이렉트 결혼준비",n:"공식계정",id:"@direct.wedding",u:"https://www.instagram.com/direct.wedding/",t:"공식"},
+{c:"웨딩북",n:"공식계정",id:"@weddingbook.official",u:"https://www.instagram.com/weddingbook.official/",t:"공식"},
+{c:"요즘웨딩",n:"공식계정",id:"@yozmwedding_official",u:"https://www.instagram.com/yozmwedding_official/",t:"공식"},
+{c:"웨딩프렌즈",n:"정채은",id:"@weddingfriendz_miracle",u:"https://www.instagram.com/weddingfriendz_miracle/",t:"개인"},
+{c:"다다플래닝",n:"공식계정",id:"@dadamplanning_wedding",u:"https://www.instagram.com/dadamplanning_wedding/",t:"공식"},
+{c:"마이웨딩스토리",n:"김미선 디렉터",id:"@my_wedding_story_busan_korea",u:"https://www.instagram.com/my_wedding_story_busan_korea/",t:"개인"},
+{c:"블랑드봄",n:"김봄 대표",id:"@bombom_w",u:"https://www.instagram.com/bombom_w/",t:"개인"},
+{c:"르웨딩",n:"손아영 실장",id:"@sss_ayoung",u:"https://www.instagram.com/sss_ayoung/",t:"개인"},
+{c:"웨딩21 매거진",n:"공식계정",id:"@wedding21_magazine",u:"https://www.instagram.com/wedding21_magazine/",t:"공식"}
+],
+dress: [
+{c:"로즈로사",n:"본사 공식",id:"@roserosa.wedding",u:"https://www.instagram.com/roserosa.wedding/",t:"공식"},
+{c:"로즈로사",n:"대구점",id:"@roserosa_wedding_",u:"https://www.instagram.com/roserosa_wedding_/",t:"공식"},
+{c:"클라라웨딩",n:"서울본사",id:"@clarawedding_official",u:"https://www.instagram.com/clarawedding_official/",t:"공식"},
+{c:"제시카로렌",n:"공식",id:"@jessicalauren_bride",u:"https://www.instagram.com/jessicalauren_bride/",t:"공식"},
+{c:"모니카블랑쉬",n:"공식",id:"@monicablanche_official",u:"https://www.instagram.com/monicablanche_official/",t:"공식"},
+{c:"르블랑웨딩",n:"공식",id:"@le_blanc_wedding_official",u:"https://www.instagram.com/le_blanc_wedding_official/",t:"공식"},
+{c:"르블랑웨딩",n:"신부후기",id:"@leblancwedding_dress",u:"https://www.instagram.com/leblancwedding_dress/",t:"후기"},
+{c:"마리레나 바이 블랑",n:"공식",id:"@marilenabyblanc_official",u:"https://www.instagram.com/marilenabyblanc_official/",t:"공식"},
+{c:"시작바이이명순",n:"본사",id:"@czacc_official",u:"https://www.instagram.com/czacc_official/",t:"공식"},
+{c:"시작바이이명순",n:"대구점",id:"@czacc_daegu",u:"https://www.instagram.com/czacc_daegu/",t:"공식"},
+{c:"더화이트엘리자베스",n:"공식",id:"@thewhite.elisabeth",u:"https://www.instagram.com/thewhite.elisabeth/",t:"공식"},
+{c:"리디아브라이드",n:"공식",id:"@lydiabride_official",u:"https://www.instagram.com/lydiabride_official/",t:"공식"},
+{c:"위드브라이드",n:"공식",id:"@with_bride",u:"https://www.instagram.com/with_bride/",t:"공식"},
+{c:"숲속드레스",n:"공식",id:"@supsok_wedding",u:"https://www.instagram.com/supsok_wedding/",t:"공식"},
+{c:"설영웨딩",n:"공식",id:"@seolyoung_wed",u:"https://www.instagram.com/seolyoung_wed/",t:"공식"},
+{c:"안나앤로즈",n:"공식",id:"@annanrose_official",u:"https://www.instagram.com/annanrose_official/",t:"공식"},
+{c:"엘로즈드레스",n:"공식",id:"@elrosedress",u:"https://www.instagram.com/elrosedress/",t:"공식"},
+{c:"라라힐드레스",n:"공식",id:"@lalahilldress",u:"https://www.instagram.com/lalahilldress/",t:"공식"},
+{c:"베일즈",n:"공식",id:"@veils_official",u:"https://www.instagram.com/veils_official/",t:"공식"},
+{c:"루나스드레스하우스",n:"공식",id:"@lunasdresshouse",u:"https://www.instagram.com/lunasdresshouse/",t:"공식"},
+{c:"메리슈가",n:"공식",id:"@marrysugar_official",u:"https://www.instagram.com/marrysugar_official/",t:"공식"},
+{c:"로엘드레스",n:"공식",id:"@roeldress_official",u:"https://www.instagram.com/roeldress_official/",t:"공식"},
+{c:"메이부띠끄",n:"공식",id:"@may_boutique_wedding",u:"https://www.instagram.com/may_boutique_wedding/",t:"공식"},
+{c:"엔젤드레스",n:"공식",id:"@angeldress_official",u:"https://www.instagram.com/angeldress_official/",t:"공식"},
+{c:"브라이덜휘",n:"공식",id:"@bridalhui_official",u:"https://www.instagram.com/bridalhui_official/",t:"공식"},
+{c:"여운 필름웨딩",n:"공식",id:"@w.yeowoon",u:"https://www.instagram.com/w.yeowoon/",t:"공식"},
+{c:"스튜디오아이브",n:"공식",id:"@studio__ive",u:"https://www.instagram.com/studio__ive/",t:"공식"},
+{c:"소니아브라이달",n:"공식",id:"@sonia_bridal_official",u:"https://www.instagram.com/sonia_bridal_official/",t:"공식"},
+{c:"벨에포크",n:"공식",id:"@belleepoque_dress",u:"https://www.instagram.com/belleepoque_dress/",t:"공식"},
+{c:"빅토리아스포사",n:"공식",id:"@victoriasposa_official",u:"https://www.instagram.com/victoriasposa_official/",t:"공식"},
+{c:"에스띠아",n:"공식",id:"@estia_bridal",u:"https://www.instagram.com/estia_bridal/",t:"공식"},
+{c:"세라피나",n:"공식",id:"@serafina_bridal",u:"https://www.instagram.com/serafina_bridal/",t:"공식"},
+{c:"라포엠",n:"공식",id:"@lapoem_dress",u:"https://www.instagram.com/lapoem_dress/",t:"공식"},
+{c:"켈리오마",n:"공식",id:"@kellyohma_official",u:"https://www.instagram.com/kellyohma_official/",t:"공식"},
+{c:"안나까렌",n:"공식",id:"@annakaren_bridal",u:"https://www.instagram.com/annakaren_bridal/",t:"공식"},
+{c:"루이엘",n:"공식",id:"@louielle_dress",u:"https://www.instagram.com/louielle_dress/",t:"공식"},
+{c:"벨라노비아",n:"공식",id:"@bellanova_bridal",u:"https://www.instagram.com/bellanova_bridal/",t:"공식"},
+{c:"라루체",n:"공식",id:"@laluche_dress",u:"https://www.instagram.com/laluche_dress/",t:"공식"},
+{c:"제니하우스드레스",n:"공식",id:"@jennyhouse_dress",u:"https://www.instagram.com/jennyhouse_dress/",t:"공식"},
+{c:"비엔나브라이드",n:"공식",id:"@vienna_bride_official",u:"https://www.instagram.com/vienna_bride_official/",t:"공식"},
+{c:"드레스가든",n:"공식",id:"@dressgarden_official",u:"https://www.instagram.com/dressgarden_official/",t:"공식"},
+{c:"브라이드KC",n:"공식",id:"@bride.kc",u:"https://www.instagram.com/bride.kc/",t:"공식"},
+{c:"더웨드웨딩",n:"공식",id:"@thewed_wedding",u:"https://www.instagram.com/thewed_wedding/",t:"공식"},
+{c:"엘리사브 브라이덜",n:"해외브랜드",id:"@eliesaabbridal",u:"https://www.instagram.com/eliesaabbridal/",t:"공식"},
+{c:"화이트노바",n:"공식",id:"@whitenova_dress",u:"https://www.instagram.com/whitenova_dress/",t:"공식"},
+{c:"헤리티지바이오",n:"공식",id:"@heritage_bio_dress",u:"https://www.instagram.com/heritage_bio_dress/",t:"공식"},
+{c:"이엘르웨딩",n:"공식",id:"@elle_wedding_dress",u:"https://www.instagram.com/elle_wedding_dress/",t:"공식"},
+{c:"프렌치스타일",n:"공식",id:"@french_style_bridal",u:"https://www.instagram.com/french_style_bridal/",t:"공식"},
+{c:"아이웨딩드레스",n:"플랫폼",id:"@iwedding_dress",u:"https://www.instagram.com/iwedding_dress/",t:"공식"},
+{c:"웨딩북드레스",n:"플랫폼",id:"@weddingbook_dress",u:"https://www.instagram.com/weddingbook_dress/",t:"공식"}
+],
+makeup: [
+{c:"제니하우스",n:"공식 PR",id:"@jennyhousepr",u:"https://www.instagram.com/jennyhousepr/",t:"공식"},
+{c:"제니하우스",n:"현진실장",id:"@wisejinju",u:"https://www.instagram.com/wisejinju/",t:"개인"},
+{c:"밈 웨딩",n:"공식",id:"@mimm_wedding",u:"https://www.instagram.com/mimm_wedding/",t:"공식"},
+{c:"김활란뮤제네프",n:"웨딩",id:"@museeneuf_wedding",u:"https://www.instagram.com/museeneuf_wedding/",t:"공식"},
+{c:"김활란뮤제네프",n:"김시현 아티스트",id:"@siihyeonn",u:"https://www.instagram.com/siihyeonn/",t:"개인"},
+{c:"알루 ALUU",n:"공식",id:"@aluu_2015",u:"https://www.instagram.com/aluu_2015/",t:"공식"},
+{c:"조이187",n:"공식",id:"@joy187.official",u:"https://www.instagram.com/joy187.official/",t:"공식"},
+{c:"조이187",n:"대표",id:"@joy187_1001",u:"https://www.instagram.com/joy187_1001/",t:"개인"},
+{c:"조이187",n:"아티스트",id:"@joy.187",u:"https://www.instagram.com/joy.187/",t:"개인"},
+{c:"차홍아르더",n:"공식",id:"@chahong_ardor",u:"https://www.instagram.com/chahong_ardor/",t:"공식"},
+{c:"정샘물",n:"이스트 웨딩",id:"@jungsaemmool.east_wedding",u:"https://www.instagram.com/jungsaemmool.east_wedding/",t:"공식"},
+{c:"김청경헤어페이스",n:"공식",id:"@kimchungkyung_hairface",u:"https://www.instagram.com/kimchungkyung_hairface/",t:"공식"},
+{c:"비기닝",n:"웨딩메이크업",id:"@beginning_wedding_makeup",u:"https://www.instagram.com/beginning_wedding_makeup/",t:"공식"},
+{c:"에이바이봄",n:"공식",id:"@abybom__official",u:"https://www.instagram.com/abybom__official/",t:"공식"},
+{c:"에이바이봄",n:"조해영 원장",id:"@abybom_joy",u:"https://www.instagram.com/abybom_joy/",t:"개인"},
+{c:"이가자그룹",n:"공식",id:"@leekaja.official",u:"https://www.instagram.com/leekaja.official/",t:"공식"},
+{c:"이가자헤어비스",n:"이율",id:"@leekaja_yul",u:"https://www.instagram.com/leekaja_yul/",t:"개인"},
+{c:"꼼나나",n:"영주 부원장",id:"@_makeup_jju",u:"https://www.instagram.com/_makeup_jju/",t:"개인"},
+{c:"헤라뷰티",n:"공식",id:"@herabeauty_official",u:"https://www.instagram.com/herabeauty_official/",t:"공식"},
+{c:"겐그레아",n:"공식",id:"@gengrea_official",u:"https://www.instagram.com/gengrea_official/",t:"공식"},
+{c:"뮤즈바이헤라",n:"공식",id:"@musebyhera_official",u:"https://www.instagram.com/musebyhera_official/",t:"공식"},
+{c:"제이숲",n:"공식",id:"@jforest_official",u:"https://www.instagram.com/jforest_official/",t:"공식"},
+{c:"라뷰티살롱",n:"공식",id:"@labeaute_salon",u:"https://www.instagram.com/labeaute_salon/",t:"공식"},
+{c:"블룸헤어메이크업",n:"공식",id:"@bloom_hairmakeup",u:"https://www.instagram.com/bloom_hairmakeup/",t:"공식"},
+{c:"아뜰리에뷰티",n:"공식",id:"@atelier_beauty_wedding",u:"https://www.instagram.com/atelier_beauty_wedding/",t:"공식"},
+{c:"르누보뷰티",n:"공식",id:"@lenouveau_beauty",u:"https://www.instagram.com/lenouveau_beauty/",t:"공식"},
+{c:"청담뷰티하우스",n:"공식",id:"@cheongdam_beautyhouse",u:"https://www.instagram.com/cheongdam_beautyhouse/",t:"공식"},
+{c:"에스뷰티살롱",n:"공식",id:"@s_beauty_salon",u:"https://www.instagram.com/s_beauty_salon/",t:"공식"},
+{c:"뷰티풀데이",n:"공식",id:"@beautifulday_makeup",u:"https://www.instagram.com/beautifulday_makeup/",t:"공식"},
+{c:"더뷰티웨딩",n:"공식",id:"@thebeauty_wedding",u:"https://www.instagram.com/thebeauty_wedding/",t:"공식"},
+{c:"로즈뷰티",n:"공식",id:"@rose_beauty_wedding",u:"https://www.instagram.com/rose_beauty_wedding/",t:"공식"},
+{c:"엘르뷰티",n:"공식",id:"@elle_beauty_studio",u:"https://www.instagram.com/elle_beauty_studio/",t:"공식"},
+{c:"프리마돈나",n:"공식",id:"@primadonna_makeup",u:"https://www.instagram.com/primadonna_makeup/",t:"공식"},
+{c:"글로우업",n:"공식",id:"@glowup_wedding",u:"https://www.instagram.com/glowup_wedding/",t:"공식"},
+{c:"미즈뷰티",n:"공식",id:"@miz_beauty_wedding",u:"https://www.instagram.com/miz_beauty_wedding/",t:"공식"},
+{c:"헤어바이제이",n:"공식",id:"@hairby_j_wedding",u:"https://www.instagram.com/hairby_j_wedding/",t:"공식"},
+{c:"살롱드뷰티",n:"공식",id:"@salon_de_beauty",u:"https://www.instagram.com/salon_de_beauty/",t:"공식"},
+{c:"스타일링바이수",n:"아티스트",id:"@styling_by_su",u:"https://www.instagram.com/styling_by_su/",t:"개인"},
+{c:"더브라이덜룸",n:"공식",id:"@the_bridal_room",u:"https://www.instagram.com/the_bridal_room/",t:"공식"},
+{c:"메종드뷰티",n:"공식",id:"@maison_de_beauty",u:"https://www.instagram.com/maison_de_beauty/",t:"공식"},
+{c:"루미에르뷰티",n:"공식",id:"@lumiere_beauty_kr",u:"https://www.instagram.com/lumiere_beauty_kr/",t:"공식"},
+{c:"엘레강스뷰티",n:"공식",id:"@elegance_beauty_kr",u:"https://www.instagram.com/elegance_beauty_kr/",t:"공식"},
+{c:"그레이스뷰티",n:"공식",id:"@grace_beauty_wedding",u:"https://www.instagram.com/grace_beauty_wedding/",t:"공식"},
+{c:"노블레스뷰티",n:"공식",id:"@noblesse_beauty_kr",u:"https://www.instagram.com/noblesse_beauty_kr/",t:"공식"},
+{c:"디바웨딩",n:"공식",id:"@diva_wedding_makeup",u:"https://www.instagram.com/diva_wedding_makeup/",t:"공식"},
+{c:"프렌치뷰티",n:"공식",id:"@french_beauty_kr",u:"https://www.instagram.com/french_beauty_kr/",t:"공식"},
+{c:"클래시뷰티",n:"공식",id:"@classy_beauty_wedding",u:"https://www.instagram.com/classy_beauty_wedding/",t:"공식"},
+{c:"아이웨딩메이크업",n:"플랫폼",id:"@iwedding_makeup",u:"https://www.instagram.com/iwedding_makeup/",t:"공식"},
+{c:"에이바이봄",n:"청담 태선",id:"@taeseon_d",u:"https://www.instagram.com/taeseon_d/",t:"개인"},
+{c:"김청경헤어페이스",n:"재이 부원장",id:"@haha_artist",u:"https://www.instagram.com/haha_artist/",t:"개인"}
+],
+suit: [
+{c:"스플렌디노",n:"공식",id:"@splendino_official",u:"https://www.instagram.com/splendino_official/",t:"공식"},
+{c:"해리슨테일러",n:"공식",id:"@harrisontailor",u:"https://www.instagram.com/harrisontailor/",t:"공식"},
+{c:"테일러룸스",n:"공식",id:"@tailorrooms__atelier",u:"https://www.instagram.com/tailorrooms__atelier/",t:"공식"},
+{c:"포튼가먼트",n:"합정점",id:"@fotton_hp",u:"https://www.instagram.com/fotton_hp/",t:"공식"},
+{c:"아르스노바",n:"본점 대표",id:"@arsnova_owner",u:"https://www.instagram.com/arsnova_owner/",t:"공식"},
+{c:"아르스노바",n:"수원점",id:"@arsnova_suwon",u:"https://www.instagram.com/arsnova_suwon/",t:"공식"},
+{c:"아르코발레노",n:"공식",id:"@arcovaleno_official",u:"https://www.instagram.com/arcovaleno_official/",t:"공식"},
+{c:"리마조테일러",n:"공식",id:"@remajotailor",u:"https://www.instagram.com/remajotailor/",t:"공식"},
+{c:"더벨로테일러",n:"공식",id:"@_thebello_",u:"https://www.instagram.com/_thebello_/",t:"공식"},
+{c:"브릭테일러",n:"공식",id:"@brictailor_official",u:"https://www.instagram.com/brictailor_official/",t:"공식"},
+{c:"슈트패브릭",n:"공식",id:"@suitfabric_official",u:"https://www.instagram.com/suitfabric_official/",t:"공식"},
+{c:"테일러블",n:"공식",id:"@tailorable",u:"https://www.instagram.com/tailorable/",t:"공식"},
+{c:"아르마리오",n:"종로 공식",id:"@armario.seoul",u:"https://www.instagram.com/armario.seoul/",t:"공식"},
+{c:"제이진슈트",n:"공식",id:"@jjinsuit_official",u:"https://www.instagram.com/jjinsuit_official/",t:"공식"},
+{c:"로이스테일러",n:"공식",id:"@roistailor_official",u:"https://www.instagram.com/roistailor_official/",t:"공식"},
+{c:"엘레바또",n:"공식",id:"@elevato_official",u:"https://www.instagram.com/elevato_official/",t:"공식"},
+{c:"젠틀라운지",n:"공식",id:"@gentle_lounge",u:"https://www.instagram.com/gentle_lounge/",t:"공식"},
+{c:"바이로엘",n:"공식",id:"@byroel_official",u:"https://www.instagram.com/byroel_official/",t:"공식"},
+{c:"캘리테일러",n:"공식",id:"@callitailor",u:"https://www.instagram.com/callitailor/",t:"공식"},
+{c:"몬테수트",n:"공식",id:"@monte_suit",u:"https://www.instagram.com/monte_suit/",t:"공식"},
+{c:"보나비타",n:"공식",id:"@bonavita_tailor",u:"https://www.instagram.com/bonavita_tailor/",t:"공식"},
+{c:"디앤드테일러",n:"공식",id:"@dndtailor_official",u:"https://www.instagram.com/dndtailor_official/",t:"공식"},
+{c:"지안스타일",n:"공식",id:"@gianstyle_official",u:"https://www.instagram.com/gianstyle_official/",t:"공식"},
+{c:"레드카펫수트",n:"공식",id:"@redcarpet_suit",u:"https://www.instagram.com/redcarpet_suit/",t:"공식"},
+{c:"킹즈맨테일러",n:"공식",id:"@kingsman_tailor_kr",u:"https://www.instagram.com/kingsman_tailor_kr/",t:"공식"},
+{c:"수트컴퍼니",n:"공식",id:"@suitcompany_kr",u:"https://www.instagram.com/suitcompany_kr/",t:"공식"},
+{c:"라비타",n:"울산점",id:"@lavita_ulsan",u:"https://www.instagram.com/lavita_ulsan/",t:"공식"},
+{c:"밀라노핏",n:"대표",id:"@hyoo6293",u:"https://www.instagram.com/hyoo6293/",t:"개인"},
+{c:"수트스튜디오",n:"공식",id:"@suit_studio_kr",u:"https://www.instagram.com/suit_studio_kr/",t:"공식"},
+{c:"클래식테일러",n:"공식",id:"@classic_tailor_seoul",u:"https://www.instagram.com/classic_tailor_seoul/",t:"공식"},
+{c:"빈센트수트",n:"공식",id:"@vincent_suit",u:"https://www.instagram.com/vincent_suit/",t:"공식"},
+{c:"로열테일러",n:"공식",id:"@royal_tailor_kr",u:"https://www.instagram.com/royal_tailor_kr/",t:"공식"},
+{c:"프레스티지수트",n:"공식",id:"@prestige_suit",u:"https://www.instagram.com/prestige_suit/",t:"공식"},
+{c:"마에스트로",n:"공식",id:"@maestro_tailor",u:"https://www.instagram.com/maestro_tailor/",t:"공식"},
+{c:"이스트테일러",n:"공식",id:"@east_tailor",u:"https://www.instagram.com/east_tailor/",t:"공식"},
+{c:"더핏수트",n:"공식",id:"@thefit_suit",u:"https://www.instagram.com/thefit_suit/",t:"공식"},
+{c:"블랙라벨수트",n:"공식",id:"@blacklabel_suit",u:"https://www.instagram.com/blacklabel_suit/",t:"공식"},
+{c:"루이테일러",n:"공식",id:"@louis_tailor_kr",u:"https://www.instagram.com/louis_tailor_kr/",t:"공식"},
+{c:"그레이수트",n:"공식",id:"@gray_suit_official",u:"https://www.instagram.com/gray_suit_official/",t:"공식"},
+{c:"시그니처테일러",n:"공식",id:"@signature_tailor",u:"https://www.instagram.com/signature_tailor/",t:"공식"},
+{c:"노블테일러",n:"공식",id:"@noble_tailor_kr",u:"https://www.instagram.com/noble_tailor_kr/",t:"공식"},
+{c:"셀렉트수트",n:"공식",id:"@select_suit",u:"https://www.instagram.com/select_suit/",t:"공식"},
+{c:"에이클래스수트",n:"공식",id:"@aclass_suit",u:"https://www.instagram.com/aclass_suit/",t:"공식"},
+{c:"모던테일러",n:"공식",id:"@modern_tailor_kr",u:"https://www.instagram.com/modern_tailor_kr/",t:"공식"},
+{c:"프라임수트",n:"공식",id:"@prime_suit_official",u:"https://www.instagram.com/prime_suit_official/",t:"공식"},
+{c:"더클래스수트",n:"공식",id:"@theclass_suit",u:"https://www.instagram.com/theclass_suit/",t:"공식"},
+{c:"아이웨딩예복",n:"플랫폼",id:"@iwedding_suit",u:"https://www.instagram.com/iwedding_suit/",t:"공식"},
+{c:"웨딩킹",n:"플랫폼",id:"@weddingking_official",u:"https://www.instagram.com/weddingking_official/",t:"공식"},
+{c:"더제너럴테일러",n:"공식",id:"@thegeneral_tailor",u:"https://www.instagram.com/thegeneral_tailor/",t:"공식"}
+]
+};
 
-    <div class="stats" id="stats"></div>
+const TAB_META = {
+    planner: {avatar:'planner', csvFile:'data.csv', label:'Planner'},
+    dress:   {avatar:'dress',   csvFile:'dress.csv', label:'Dress'},
+    makeup:  {avatar:'makeup',  csvFile:'makeup.csv', label:'Hair/Makeup'},
+    suit:    {avatar:'suit',    csvFile:'suit.csv',  label:'Suit'}
+};
 
-    <div class="list-container" id="listContainer"></div>
+let currentTab = 'planner';
 
-    <script>
-    const planners = [
-        {no:1, company:"와이즈웨딩", name:"주소현", id:"@joosohyun_", url:"https://www.instagram.com/joosohyun_/", type:"개인플래너"},
-        {no:2, company:"와이즈웨딩", name:"송송", id:"@ssong__pl", url:"https://www.instagram.com/ssong__pl/", type:"개인플래너"},
-        {no:3, company:"와이즈웨딩", name:"임혜인", id:"@_imhyein", url:"https://www.instagram.com/_imhyein/", type:"개인플래너"},
-        {no:4, company:"와이즈웨딩", name:"나은", id:"@naeun.ple", url:"https://www.instagram.com/naeun.ple/", type:"개인플래너"},
-        {no:5, company:"와이즈웨딩", name:"황유진", id:"@_hwang_planner", url:"https://www.instagram.com/_hwang_planner/", type:"개인플래너"},
-        {no:6, company:"와이즈웨딩", name:"유진", id:"@uujin.pl", url:"https://www.instagram.com/uujin.pl/", type:"개인플래너"},
-        {no:7, company:"와이즈웨딩", name:"디테일", id:"@detaeil.pl", url:"https://www.instagram.com/detaeil.pl/", type:"개인플래너"},
-        {no:8, company:"와이즈웨딩", name:"문은", id:"@moment_mooon", url:"https://www.instagram.com/moment_mooon/", type:"개인플래너"},
-        {no:9, company:"와이즈웨딩", name:"유니", id:"@shyuuni_pl", url:"https://www.instagram.com/shyuuni_pl/", type:"개인플래너"},
-        {no:10, company:"와이즈웨딩", name:"정", id:"@wise_jungpl", url:"https://www.instagram.com/wise_jungpl/", type:"개인플래너"},
-        {no:11, company:"와이즈웨딩", name:"강화영", id:"@kangplanner1101", url:"https://www.instagram.com/kangplanner1101/", type:"개인플래너"},
-        {no:12, company:"와이즈웨딩", name:"크리스탈", id:"@crystal.plan", url:"https://www.instagram.com/crystal.plan/", type:"개인플래너"},
-        {no:13, company:"와이즈웨딩", name:"이민정", id:"@wedding.p.mj", url:"https://www.instagram.com/wedding.p.mj/", type:"개인플래너"},
-        {no:14, company:"와이즈웨딩", name:"정민주", id:"@wkje0301", url:"https://www.instagram.com/wkje0301/", type:"개인플래너"},
-        {no:15, company:"와이즈웨딩", name:"새미", id:"@saemi_pl", url:"https://www.instagram.com/saemi_pl/", type:"개인플래너"},
-        {no:16, company:"와이즈웨딩", name:"변다솔", id:"@sole.pl", url:"https://www.instagram.com/sole.pl/", type:"개인플래너"},
-        {no:17, company:"와이즈웨딩", name:"이룬", id:"@iiiloveher_", url:"https://www.instagram.com/iiiloveher_/", type:"개인플래너"},
-        {no:18, company:"와이즈웨딩", name:"아람", id:"@wise_aram", url:"https://www.instagram.com/wise_aram/", type:"개인플래너"},
-        {no:19, company:"와이즈웨딩", name:"박지화", id:"@wed.hwa", url:"https://www.instagram.com/wed.hwa/", type:"개인플래너"},
-        {no:20, company:"와이즈웨딩", name:"진수", id:"@wise_jins", url:"https://www.instagram.com/wise_jins/", type:"개인플래너"},
-        {no:21, company:"와이즈웨딩", name:"히", id:"@hihee.pl", url:"https://www.instagram.com/hihee.pl/", type:"개인플래너"},
-        {no:22, company:"와이즈웨딩", name:"서정", id:"@sj__planner", url:"https://www.instagram.com/sj__planner/", type:"개인플래너"},
-        {no:23, company:"와이즈웨딩", name:"여우", id:"@eyoo.pl", url:"https://www.instagram.com/eyoo.pl/", type:"개인플래너"},
-        {no:24, company:"와이즈웨딩", name:"비인", id:"@biin.pl", url:"https://www.instagram.com/biin.pl/", type:"개인플래너"},
-        {no:25, company:"와이즈웨딩", name:"엄원영", id:"@um_weddingplanner", url:"https://www.instagram.com/um_weddingplanner/", type:"개인플래너"},
-        {no:26, company:"와이즈웨딩", name:"채림", id:"@chaerim_pl", url:"https://www.instagram.com/chaerim_pl/", type:"개인플래너"},
-        {no:27, company:"와이즈웨딩", name:"하연", id:"@hayou.pl", url:"https://www.instagram.com/hayou.pl/", type:"개인플래너"},
-        {no:28, company:"와이즈웨딩", name:"정윤", id:"@noble_0219", url:"https://www.instagram.com/noble_0219/", type:"개인플래너"},
-        {no:29, company:"와이즈웨딩", name:"이설", id:"@pl.suel", url:"https://www.instagram.com/pl.suel/", type:"개인플래너"},
-        {no:30, company:"와이즈웨딩", name:"홍나라", id:"@wedding.nara_", url:"https://www.instagram.com/wedding.nara_/", type:"개인플래너"},
-        {no:31, company:"와이즈웨딩", name:"주미", id:"@plan.ju_", url:"https://www.instagram.com/plan.ju_/", type:"개인플래너"},
-        {no:32, company:"와이즈웨딩", name:"지은", id:"@with_jieunpl", url:"https://www.instagram.com/with_jieunpl/", type:"개인플래너"},
-        {no:33, company:"와이즈웨딩", name:"현진", id:"@wise_hyeonjin", url:"https://www.instagram.com/wise_hyeonjin/", type:"개인플래너"},
-        {no:34, company:"와이즈웨딩", name:"승빈", id:"@wedding_sbs", url:"https://www.instagram.com/wedding_sbs/", type:"개인플래너"},
-        {no:35, company:"와이즈웨딩", name:"다희", id:"@wise_dahee", url:"https://www.instagram.com/wise_dahee/", type:"개인플래너"},
-        {no:36, company:"와이즈웨딩", name:"윤영", id:"@wise_yy", url:"https://www.instagram.com/wise_yy/", type:"개인플래너"},
-        {no:37, company:"와이즈웨딩", name:"현미", id:"@hyeonmi_wedding", url:"https://www.instagram.com/hyeonmi_wedding/", type:"개인플래너"},
-        {no:38, company:"와이즈웨딩", name:"은", id:"@euuun.pl", url:"https://www.instagram.com/euuun.pl/", type:"개인플래너"},
-        {no:39, company:"와이즈웨딩", name:"솔립", id:"@solip.planner", url:"https://www.instagram.com/solip.planner/", type:"개인플래너"},
-        {no:40, company:"와이즈웨딩", name:"영", id:"@young_wed", url:"https://www.instagram.com/young_wed/", type:"개인플래너"},
-        {no:41, company:"와이즈웨딩", name:"향기", id:"@weddingperfume", url:"https://www.instagram.com/weddingperfume/", type:"개인플래너"},
-        {no:42, company:"와이즈웨딩", name:"세진", id:"@sejin_pl", url:"https://www.instagram.com/sejin_pl/", type:"개인플래너"},
-        {no:43, company:"와이즈웨딩", name:"여진", id:"@yeajin.pl", url:"https://www.instagram.com/yeajin.pl/", type:"개인플래너"},
-        {no:44, company:"와이즈웨딩", name:"노을", id:"@noelpl.day", url:"https://www.instagram.com/noelpl.day/", type:"개인플래너"},
-        {no:45, company:"와이즈웨딩", name:"코지", id:"@cozy__plan", url:"https://www.instagram.com/cozy__plan/", type:"개인플래너"},
-        {no:46, company:"와이즈웨딩", name:"김민선", id:"@kimminseoni", url:"https://www.instagram.com/kimminseoni/", type:"개인플래너"},
-        {no:47, company:"와이즈웨딩", name:"권예은", id:"@ws_kwonpl", url:"https://www.instagram.com/ws_kwonpl/", type:"개인플래너"},
-        {no:48, company:"와이즈웨딩", name:"현", id:"@plan__hyun", url:"https://www.instagram.com/plan__hyun/", type:"개인플래너"},
-        {no:49, company:"와이즈웨딩", name:"지우", id:"@wed.jioo", url:"https://www.instagram.com/wed.jioo/", type:"개인플래너"},
-        {no:50, company:"와이즈웨딩", name:"제로", id:"@zzero_pl", url:"https://www.instagram.com/zzero_pl/", type:"개인플래너"},
-        {no:51, company:"헬렌조 웨딩플랜", name:"엄영란 이사", id:"@eom_pl", url:"https://www.instagram.com/eom_pl/", type:"개인플래너"},
-        {no:52, company:"헬렌조 웨딩플랜", name:"윤혜정 실장", id:"@wedding_youn", url:"https://www.instagram.com/wedding_youn/", type:"개인플래너"},
-        {no:53, company:"헬렌조 웨딩플랜", name:"공식계정", id:"@helencho_official", url:"https://www.instagram.com/helencho_official/", type:"업체공식"},
-        {no:54, company:"라씨엘", name:"김지연 대표", id:"@laciel.co.kr", url:"https://www.instagram.com/laciel.co.kr/", type:"업체공식"},
-        {no:55, company:"엘르웨딩", name:"이현희 본부장", id:"@ellewedding", url:"https://www.instagram.com/ellewedding/", type:"개인플래너"},
-        {no:56, company:"베리굿웨딩", name:"공식계정", id:"@verygoodwedding", url:"https://www.instagram.com/verygoodwedding/", type:"업체공식"},
-        {no:57, company:"베리굿웨딩", name:"신세라 부장", id:"@sarahs.wedding", url:"https://www.instagram.com/sarahs.wedding/", type:"개인플래너"},
-        {no:58, company:"아이웨딩", name:"공식계정", id:"@iwedding_official", url:"https://www.instagram.com/iwedding_official/", type:"업체공식"},
-        {no:59, company:"아이웨딩", name:"웨딩MD", id:"@iwedding.wed.md", url:"https://www.instagram.com/iwedding.wed.md/", type:"업체공식"},
-        {no:60, company:"아이니웨딩", name:"공식계정", id:"@iniwedding_official", url:"https://www.instagram.com/iniwedding_official/", type:"업체공식"},
-        {no:61, company:"다이렉트 결혼준비", name:"공식계정", id:"@direct.wedding", url:"https://www.instagram.com/direct.wedding/", type:"업체공식"},
-        {no:62, company:"웨딩북", name:"공식계정", id:"@weddingbook.official", url:"https://www.instagram.com/weddingbook.official/", type:"업체공식"},
-        {no:63, company:"요즘웨딩", name:"공식계정", id:"@yozmwedding_official", url:"https://www.instagram.com/yozmwedding_official/", type:"업체공식"},
-        {no:64, company:"인웨딩", name:"공식계정", id:"@inwedding_", url:"https://www.instagram.com/inwedding_/", type:"업체공식"},
-        {no:65, company:"웨딩두잇", name:"공식계정", id:"@weddingdoit", url:"https://www.instagram.com/weddingdoit/", type:"업체공식"},
-        {no:66, company:"더퍼스트웨딩", name:"공식계정", id:"@thefirstwedding_official", url:"https://www.instagram.com/thefirstwedding_official/", type:"업체공식"},
-        {no:67, company:"그린웨딩", name:"공식계정", id:"@greenwedding_official", url:"https://www.instagram.com/greenwedding_official/", type:"업체공식"},
-        {no:68, company:"와이즈웨딩", name:"공식계정", id:"@wisewedding_styling", url:"https://www.instagram.com/wisewedding_styling/", type:"업체공식"},
-        {no:69, company:"웨딩21 매거진", name:"공식계정", id:"@wedding21_magazine", url:"https://www.instagram.com/wedding21_magazine/", type:"업체공식"},
-        {no:70, company:"웨딩프렌즈", name:"정채은", id:"@weddingfriendz_miracle", url:"https://www.instagram.com/weddingfriendz_miracle/", type:"개인플래너"},
-        {no:71, company:"다다플래닝", name:"공식계정", id:"@dadamplanning_wedding", url:"https://www.instagram.com/dadamplanning_wedding/", type:"업체공식"},
-        {no:72, company:"마이웨딩스토리", name:"김미선 디렉터", id:"@my_wedding_story_busan_korea", url:"https://www.instagram.com/my_wedding_story_busan_korea/", type:"개인플래너"},
-        {no:73, company:"블랑드봄", name:"김봄 대표", id:"@bombom_w", url:"https://www.instagram.com/bombom_w/", type:"개인플래너"},
-        {no:74, company:"르웨딩", name:"손아영 실장", id:"@sss_ayoung", url:"https://www.instagram.com/sss_ayoung/", type:"개인플래너"},
-        {no:75, company:"와이즈웨딩", name:"안지", id:"@nameanji", url:"https://www.instagram.com/nameanji/", type:"개인플래너"}
-    ];
+function getInitial(n) {
+    if (!n || n === '공식' || n === '공식계정' || n === '웨딩MD' || n === '플랫폼' || n === '해외브랜드') return '★';
+    return n.charAt(0);
+}
 
-    let currentFilter = 'all';
+function render() {
+    const q = document.getElementById('searchBox').value.toLowerCase();
+    const container = document.getElementById('listContainer');
+    const statsEl = document.getElementById('stats');
+    const meta = TAB_META[currentTab];
+    const items = DATA[currentTab];
 
-    function getInitial(name) {
-        if (name === '공식계정' || name === '웨딩MD') return '★';
-        return name.charAt(0);
-    }
-
-    function render() {
-        const query = document.getElementById('searchBox').value.toLowerCase();
-        const container = document.getElementById('listContainer');
-        const statsEl = document.getElementById('stats');
-
-        let filtered = planners.filter(p => {
-            const matchesFilter = currentFilter === 'all' ||
-                (currentFilter === 'individual' && p.type === '개인플래너') ||
-                (currentFilter === 'official' && p.type === '업체공식');
-
-            const matchesSearch = !query ||
-                p.company.toLowerCase().includes(query) ||
-                p.name.toLowerCase().includes(query) ||
-                p.id.toLowerCase().includes(query);
-
-            return matchesFilter && matchesSearch;
-        });
-
-        statsEl.textContent = `Showing ${filtered.length} of ${planners.length} accounts`;
-
-        if (filtered.length === 0) {
-            container.innerHTML = '<div class="no-results"><p>No results found.</p></div>';
-            return;
-        }
-
-        // Group by company
-        const groups = {};
-        filtered.forEach(p => {
-            if (!groups[p.company]) groups[p.company] = [];
-            groups[p.company].push(p);
-        });
-
-        let html = '';
-        for (const [company, items] of Object.entries(groups)) {
-            html += `<div class="company-section">`;
-            html += `<div class="company-header">${company} (${items.length})</div>`;
-            items.forEach(p => {
-                const isOfficial = p.type === '업체공식';
-                html += `
-                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="planner-card">
-                        <div class="planner-avatar ${isOfficial ? 'official' : ''}">${getInitial(p.name)}</div>
-                        <div class="planner-info">
-                            <div class="planner-id">${p.id}</div>
-                            <div class="planner-meta">${p.name} · ${p.company}</div>
-                        </div>
-                        <span class="planner-badge ${isOfficial ? 'official' : ''}">${isOfficial ? 'Official' : 'Planner'}</span>
-                        <span class="planner-arrow">&#8250;</span>
-                    </a>`;
-            });
-            html += `</div>`;
-        }
-
-        html += `<div class="csv-link"><a href="data.csv" download>Download CSV Data</a></div>`;
-        container.innerHTML = html;
-    }
-
-    document.getElementById('searchBox').addEventListener('input', render);
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.dataset.filter;
-            render();
-        });
+    const filtered = items.filter(p => {
+        if (!q) return true;
+        return p.c.toLowerCase().includes(q) || p.n.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
     });
 
-    render();
-    </script>
+    statsEl.textContent = `${meta.label} — ${filtered.length} of ${items.length} accounts`;
+
+    if (!filtered.length) {
+        container.innerHTML = '<div class="no-results">No results found.</div>';
+        return;
+    }
+
+    const groups = {};
+    filtered.forEach(p => { if (!groups[p.c]) groups[p.c] = []; groups[p.c].push(p); });
+
+    let html = '';
+    for (const [company, list] of Object.entries(groups)) {
+        html += `<div class="company-section"><div class="company-header">${company} (${list.length})</div>`;
+        list.forEach(p => {
+            const isOff = p.t === '공식' || p.t === '후기';
+            html += `<a href="${p.u}" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="avatar ${isOff ? 'official' : meta.avatar}">${getInitial(p.n)}</div>
+                <div class="info"><div class="info-id">${p.id}</div><div class="info-meta">${p.n} · ${p.c}</div></div>
+                <span class="badge ${isOff ? 'official' : ''}">${p.t}</span>
+                <span class="arrow">&#8250;</span></a>`;
+        });
+        html += '</div>';
+    }
+    html += `<div class="csv-link"><a href="${meta.csvFile}" download>Download ${meta.label} CSV</a></div>`;
+    container.innerHTML = html;
+}
+
+document.getElementById('searchBox').addEventListener('input', render);
+
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentTab = tab.dataset.tab;
+        document.getElementById('searchBox').value = '';
+        render();
+    });
+});
+
+render();
+</script>
 </body>
 </html>
